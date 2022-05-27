@@ -20,7 +20,28 @@ body {
 .MyButton{
     outline:auto;
     text-decoration:inherit;
-    font:italic,12px,Helvetica;
+    font:italic,14px,Helvetica;
     
     background-color:coral
+}
+
+th,td{
+    padding:10px;
+    border-bottom 1px solid;
+}
+
+tr:hover {
+   background-color:chartreuse;
+}
+body {
+    background-image: url('../image/bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    
+}
+
+.MyTable{
+    background-color:azure;
+    width:100%;
 }
