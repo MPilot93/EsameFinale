@@ -1,21 +1,16 @@
 ﻿@model RoomModel;
-
 @{
     ViewBag.Title = "Confermare operazione";
 }
 
-
-@using (Html.BeginForm("EmptyRoom","Home",FormMethod.Post))
+@using (Html.BeginForm("EmptyAll","Home",FormMethod.Post))
 {
     <div class="form-horizontal">
-        <div>Conferma IdSala da resettare:</div>
-        <hr>
+        
          <div class="form-group">
-            @Html.LabelFor(model => model.IdRoom, htmlAttributes: new {@class = "label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IdRoom)
+             <p>Confermare?</p>
+             @Html.CheckBox("Confermare?",true)
             </div>
-        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

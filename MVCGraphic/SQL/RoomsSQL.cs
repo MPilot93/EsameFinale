@@ -49,7 +49,23 @@ namespace MVCGraphic.SQL
 
             command.ExecuteNonQuery();
         }
+
+        public void EmptyAll()
+        {
+            using var connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            var query = @"UPDATE Rooms
+                            SET Occupied = 0,
+                                Value = 0";
+            using var command = new SqlCommand(query, connection);
+            
+
+
+            command.ExecuteNonQuery();
+        }
     }
+
 
 
 }

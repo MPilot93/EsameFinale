@@ -57,7 +57,7 @@ namespace MVCGraphic.Controllers
             var room = _roomDB.GetAll().Where(x => x.IdRoom == id).FirstOrDefault();
             return View(room);
         }
-        [HttpPut]
+        [HttpPost]
         public IActionResult EmptyRoom(RoomModel room)
         {
         
@@ -67,6 +67,22 @@ namespace MVCGraphic.Controllers
             return RedirectToAction("index");
         }
 
+        [HttpGet]
+        public IActionResult Confirm()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult EmptyAll()
+        {
+
+            var res = _roomDB.GetAll();
+            _roomDB.EmptyAll();
+
+
+
+            return RedirectToAction("index");
+        }
 
         //[HttpGet]
         //public async Task<IActionResult> IndexAsync()
