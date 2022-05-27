@@ -2,7 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddHttpClient("CinemaApi", configClient => { configClient.BaseAddress = new Uri("https://localhost:7239/"); });
+//builder.Services.AddHttpClient("CinemaApi", configClient => { configClient.BaseAddress = new Uri("https://localhost:7239/"); });
 
 var app = builder.Build();
 

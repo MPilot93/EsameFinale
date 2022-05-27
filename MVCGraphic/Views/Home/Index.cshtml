@@ -1,5 +1,5 @@
-﻿@using Cinema.Api.Models;
-@model IEnumerable<Rooms>
+﻿
+@model IEnumerable<RoomModel>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -57,7 +57,7 @@
                 <td>@room.IdFilm</td>
                 <td>@room.Value</td>
                 <td>
-                    @Html.ActionLink("Acquista Biglietto", "NewTicket") 
+                    @Html.ActionLink("Acquista Biglietto", "ControlBirth", new{IdFilm=room.IdFilm}) ||
                     @Html.ActionLink("Svuota sala", "EmptyRoom", new{ IdRoom=room.IdRoom}) 
                     
                     
@@ -68,7 +68,7 @@
 
     else
     {
-        <td colspan=4 class=" text-center">Errore, riprova più tardi</td>
+        <td colspan=5 class=" text-center">Errore, riprova più tardi</td>
     }
 </table>
 

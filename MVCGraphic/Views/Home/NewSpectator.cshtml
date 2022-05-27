@@ -1,0 +1,44 @@
+﻿@model SpectatorModel;
+
+@{
+    ViewBag.Title = "registra nuovo spettatore";
+}
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div>Registra nuovo spettatore:</div>
+        <hr>
+        @Html.HiddenFor(model => model.IdSpectator)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new {@class = "label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Birth, htmlAttributes: new {@class = "label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Birth)
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdTicket, htmlAttributes: new {@class = "label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IdTicket)
+            </div>
+        </div>
+      
+       
+         <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Aggiungi" class="btn btn-primary"/>
+            </div>
+        </div>
+
+    </div>
+}
+<div>
+    @Html.ActionLink("Indietro","Index")
+</div>
