@@ -31,11 +31,7 @@ namespace Cinema.Api.SQL
             };
 
             DateTime today = DateTime.Now;
-            if (today.Year - result.Birth.Year > 70)
-            {
-                return true;
-            }
-            else return false;
+            return today.Year - result.Birth.Year > 70;
         }
 
         public bool IsUnder(Spectator spectator)
@@ -58,11 +54,7 @@ namespace Cinema.Api.SQL
             };
 
             DateTime today = DateTime.Now;
-            if (today.Year - result.Birth.Year < 18)
-            {
-                return true;
-            }
-            else return false;
+            return today.Year - result.Birth.Year < 14;
         }
         public bool IsPlusUnder(Spectator spectator)
         {
@@ -84,11 +76,7 @@ namespace Cinema.Api.SQL
             };
 
             DateTime today = DateTime.Now;
-            if (today.Year - result.Birth.Year < 5)
-            {
-                return true;
-            }
-            else return false;
+            return today.Year - result.Birth.Year < 5;
         }
 
 

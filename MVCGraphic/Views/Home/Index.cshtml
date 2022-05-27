@@ -1,0 +1,75 @@
+﻿@using Cinema.Api.Models;
+@model IEnumerable<Rooms>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Gestione Sale</h1>
+</div>
+
+<div>
+    <h3>Possibili operazioni:</h3>
+
+    <table class=" table">
+    <tr>
+        <td>
+            @Html.ActionLink("Registra spettatore","NewSpectator")
+        </td>
+        <td>
+            @Html.ActionLink("Modifica Elemento","IdControl")
+        </td>
+        <td>
+            @Html.ActionLink("Elimina Elemento","Delete")
+        </td>
+   </tr>
+</table>
+
+<table class=" table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model=>model.IdRoom)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.Nseats)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.Occupied)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.IdFilm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model=>model.Value)
+            </th>
+      
+        </tr>
+
+    @if (Model!=null && Model.Any())
+    {
+        foreach(var room in Model)
+        {
+            <tr>
+                <td>@room.IdRoom</td>
+                <td>@room.Nseats</td>
+                <td>@room.Occupied</td>
+                <td>@room.IdFilm</td>
+                <td>@room.Value</td>
+                <td>
+                    @Html.ActionLink("Acquista Biglietto", "NewTicket") 
+                    @Html.ActionLink("Svuota sala", "EmptyRoom", new{ IdRoom=room.IdRoom}) 
+                    
+                    
+                </td>
+            </tr>
+        }
+    }
+
+    else
+    {
+        <td colspan=4 class=" text-center">Errore, riprova più tardi</td>
+    }
+</table>
+
+
