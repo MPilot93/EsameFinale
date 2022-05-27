@@ -34,7 +34,7 @@ namespace MVCGraphic.SQL
             }
         }
 
-        public void Empty(RoomModel room)
+        public void Empty(int ID )
         {
             using var connection = new SqlConnection(_connectionString);
             connection.Open();
@@ -42,14 +42,15 @@ namespace MVCGraphic.SQL
             var query = @"UPDATE Rooms
                             SET Occupied = 0,
                                 Value = 0
-                            WHERE Id = @Id";
+                            WHERE IdRoom = @ID";
             using var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("Id", ID);
 
-            command.Parameters.AddWithValue("Occupied", room.Occupied);
-            command.Parameters.AddWithValue("Value", room.Value);
 
             command.ExecuteNonQuery();
         }
     }
+
+
 }
 

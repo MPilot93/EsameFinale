@@ -54,15 +54,16 @@ namespace MVCGraphic.Controllers
         [HttpGet]
         public IActionResult EmptyRoom(int id)
         {
-            var room=_roomDB.GetAll().Where(x=>x.IdRoom==id).FirstOrDefault();
+            var room = _roomDB.GetAll().Where(x => x.IdRoom == id).FirstOrDefault();
             return View(room);
         }
         [HttpPut]
         public IActionResult EmptyRoom(RoomModel room)
         {
+        
             var res = _roomDB.GetAll().Where(x => x.IdRoom == room.IdRoom).FirstOrDefault();
             
-                _roomDB.Empty(room);
+                _roomDB.Empty(room.IdRoom);
             return RedirectToAction("index");
         }
 
