@@ -31,9 +31,6 @@ namespace Cinema.Api.SQL
             }
         }
 
-        public decimal GetTotal()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

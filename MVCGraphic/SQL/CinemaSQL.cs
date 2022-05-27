@@ -33,7 +33,28 @@ namespace MVCGraphic.SQL
 
         public decimal GetTotal()
         {
-            throw new NotImplementedException();
+            using var connection = new SqlConnection(_connectionString);
+            connection.Open();
+            List<CinemaModel> list = new List<CinemaModel>();
+            var query = "SELECT [Room], [Value] FROM Cinema;";
+
+            using var command = new SqlCommand(query, connection);
+            using var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var result = new CinemaModel();
+
+                result.Room = Convert.ToInt32(reader["Room"]);
+                result.Value = Convert.ToDecimal(reader["Value"]);
+                list.Add(result);
+            }
+            decimal total = 0;
+            foreach (var item in list)
+            {
+                total += item.Value;
+            }
+            return total;
         }
     }
 }

@@ -33,6 +33,7 @@ namespace Cinema.Api.SQL
                 };
             }
         }
+        
 
         public void Empty(Rooms room)
         {
