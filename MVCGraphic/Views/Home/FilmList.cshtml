@@ -1,0 +1,54 @@
+﻿@model IEnumerable<FilmModel>
+
+@{
+    ViewData["Title"] = "Film disponibili";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Film attualmente disponibili</h1>
+</div>
+
+
+
+<table class=" table">
+        <tr>
+            
+           
+             <th>
+                @Html.DisplayNameFor(model=>model.Title)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.Genre)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.Director)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model=>model.Minutes)
+            </th>
+      
+        </tr>
+
+    @if (Model!=null && Model.Any())
+    {
+        foreach(var room in Model)
+        {
+            <tr>
+                <td>@room.Title</td>
+                <td>@room.Genre</td>
+                <td>@room.Director</td>
+                <td>@room.Minutes</td>
+               
+            </tr>
+        }
+    }
+
+    else
+    {
+        <td colspan=5 class=" text-center">Errore, riprova più tardi</td>
+    }
+</table>
+
+<div>
+    @Html.ActionLink("Indietro","Index")
+</div>

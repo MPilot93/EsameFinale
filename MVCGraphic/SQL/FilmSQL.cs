@@ -12,6 +12,28 @@ namespace MVCGraphic.SQL
             _connectionString = connectionString;
         }
 
+        public IEnumerable<FilmModel> GetAll()
+        {
+            using var connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            var query = "SELECT * FROM Film";
+
+            using var command = new SqlCommand(query, connection);
+            using var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                yield return new FilmModel
+                {
+                    IdFilm = Convert.ToInt32(reader["IdRoom"]),
+                    Title = reader["Title"].ToString(),
+                    Genre = reader["Genre"].ToString(),
+                    Director = reader["Director"].ToString(),
+                    Minutes = Convert.ToInt32(reader["Minutes"])
+                };
+            }
+        }
         public FilmModel GetById(int id)
         {
             using var connection = new SqlConnection(_connectionString);

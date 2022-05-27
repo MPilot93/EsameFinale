@@ -11,8 +11,8 @@ namespace MVCGraphic.Controllers
         private readonly ILogger<HomeController> _logger;
         // private readonly IHttpClientFactory _client;
         //public string Message { get; set; }
-        private  CinemaSQL _cinemaDB;
-        private  RoomSQL _roomDB;
+        private  CinemaSQL _cinema;
+        private  RoomSQL _room;
         private  FilmSQL _film;
         private  SpectatorSQL _spectator;
         private  TicketSQL _ticket;
@@ -22,11 +22,11 @@ namespace MVCGraphic.Controllers
         {
             _logger = logger;
             //_client = client;
-            _cinemaDB = new CinemaSQL(conString);
-            _roomDB = new RoomSQL(conString);
+            _cinema = new CinemaSQL(conString);
+            _room = new RoomSQL(conString);
             _film = new FilmSQL(conString);
             _spectator = new SpectatorSQL(conString);
-            _ticket=new TicketSQL(conString);
+            _ticket = new TicketSQL(conString);
 
             
         }
@@ -34,8 +34,15 @@ namespace MVCGraphic.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var result = _roomDB.GetAll();
+            var result = _room.GetAll();
 
+            return View(result);
+        }
+
+        [HttpGet]
+        public IActionResult FilmList()
+        {
+            var result = _film.GetAll();
             return View(result);
         }
 
@@ -54,16 +61,16 @@ namespace MVCGraphic.Controllers
         [HttpGet]
         public IActionResult EmptyRoom(int id)
         {
-            var room = _roomDB.GetAll().Where(x => x.IdRoom == id).FirstOrDefault();
+            var room = _room.GetAll().Where(x => x.IdRoom == id).FirstOrDefault();
             return View(room);
         }
         [HttpPost]
         public IActionResult EmptyRoom(RoomModel room)
         {
         
-            var res = _roomDB.GetAll().Where(x => x.IdRoom == room.IdRoom).FirstOrDefault();
+            var res = _room.GetAll().Where(x => x.IdRoom == room.IdRoom).FirstOrDefault();
             
-                _roomDB.Empty(room.IdRoom);
+                _room.Empty(room.IdRoom);
             return RedirectToAction("index");
         }
 
@@ -76,8 +83,8 @@ namespace MVCGraphic.Controllers
         public IActionResult EmptyAll()
         {
 
-            var res = _roomDB.GetAll();
-            _roomDB.EmptyAll();
+            var res = _room.GetAll();
+            _room.EmptyAll();
 
 
 

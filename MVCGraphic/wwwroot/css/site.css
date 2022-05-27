@@ -16,3 +16,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.MyButton{
+    outline:auto;
+    text-decoration:inherit;
+    font:italic,12px,Helvetica;
+    
+    background-color:coral
+}
