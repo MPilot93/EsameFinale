@@ -7,9 +7,9 @@ namespace Cinema.Api.Models
     {
         [Required]
         public int IdSpectator { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
         [Required]
-        public DateOnly Birth { get; set; }
+        public DateTime Birth { get; set; }
         public int IdTicket { get; set; }
     }
 }
